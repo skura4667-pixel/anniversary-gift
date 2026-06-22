@@ -1,0 +1,206 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary My Love</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0d0d11;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        /* ကြယ်ပွင့်နောက်ခံ */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            z-index: 1;
+        }
+
+        /* ပထမဆုံးပေါ်မယ့် Surprise Button Box */
+        .box-intro {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.5s ease;
+        }
+        .box-intro img {
+            width: 100px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        .box-intro h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+        .btn-yes {
+            background: #ff477e;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+            transition: 0.3s;
+        }
+        .btn-yes:hover {
+            transform: scale(1.1);
+            background: #ff2a63;
+        }
+
+        /* နှလုံးသား ပုံစံနေရာချမယ့် container */
+        .heart-container {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        /* ဓာတ်ပုံများရဲ့ ပုံစံ */
+        .photo {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            border-radius: 12px;
+            border: 3px solid white;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: scale(0) translate(0, 0);
+            transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease;
+        }
+
+        /* အလယ်ကစာသား */
+        .wishes {
+            position: absolute;
+            text-align: center;
+            z-index: 6;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 2s ease 2s; /* ပုံတွေပေါ်ပြီးမှ ပြပြောင်းမယ် */
+        }
+        .wishes h1 {
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255,71,126,0.6);
+            margin-bottom: 10px;
+        }
+        .wishes p {
+            font-size: 18px;
+            color: #ffb3c6;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <audio id="bgMusic" src="music.mp3" loop></audio>
+
+    <div class="box-intro" id="introBox">
+        <img src="https://api.iconify.design/mdi:rabbit.svg?color=%23ff477e" alt="Bunny">
+        <h2>Surprise ကြည့်ချင်လား? 💜</h2>
+        <button class="btn-yes" onclick="startSurprise()">Yes!</button>
+    </div>
+
+    <div class="heart-container" id="heartContainer">
+        
+        <div class="wishes" id="wishesText">
+            <h1>Happy Anniversary ပါ အသည်းလေးရေ... </h1>
+            <p>မင်းက ငါ့ရဲ့ တစ်ခုတည်းသော ကမ္ဘာကြီးပါနော်။</p>
+        </div>
+
+        <img src="photo1.jpg" class="photo" alt="Love">
+        <img src="photo2.jpg" class="photo" alt="Love">
+        <img src="photo3.jpg" class="photo" alt="Love">
+        <img src="photo4.jpg" class="photo" alt="Love">
+        <img src="photo5.jpg" class="photo" alt="Love">
+        <img src="photo6.jpg" class="photo" alt="Love">
+        <img src="photo7.jpg" class="photo" alt="Love">
+        <img src="photo8.jpg" class="photo" alt="Love">
+        <img src="photo9.jpg" class="photo" alt="Love">
+        <img src="photo10.jpg" class="photo" alt="Love">
+        <img src="photo11.jpg" class="photo" alt="Love">
+        <img src="photo12.jpg" class="photo" alt="Love">
+    </div>
+
+    <script>
+        function startSurprise() {
+            // Intro Box ကို ဖျောက်လိုက်မယ်
+            document.getElementById('introBox').style.display = 'none';
+            
+            // သီချင်း ဖွင့်မယ်
+            var music = document.getElementById('bgMusic');
+            music.play().catch(function(error) {
+                console.log("Music play blocked by browser. Click anywhere to play.");
+            });
+
+            // Container ကို ပြမယ်
+            var container = document.getElementById('heartContainer');
+            container.style.display = 'flex';
+
+            // ဓာတ်ပုံတွေကို နှလုံးသားပုံသဏ္ဍာန် တွက်ချက်ပြီး နေရာချမယ်
+            var photos = document.querySelectorAll('.photo');
+            var total = photos.length;
+
+            photos.forEach((photo, index) => {
+                // Heart Curve Equation (နှလုံးသားပုံသဏ္ဍာန်ဖော်နည်း)
+                var angle = (index / total) * Math.PI * 2;
+                
+                // နှလုံးသားပုံစံ ပေါ်လာစေဖို့ x နဲ့ y ညွန်ကိန်း တွက်ချက်ခြင်း
+                var x = 16 * Math.pow(Math.sin(angle), 3);
+                var y = -(13 * Math.cos(angle) - 5 * Math.cos(2*angle) - 2 * Math.cos(3*angle) - Math.cos(4*angle));
+                
+                // ပုံတွေကို ပိုကျယ်ကျယ်ပြန့်ပြန့် ဖြစ်သွားအောင် မြှောက်ပေးရတဲ့ ကိန်း
+                var scaleX = x * 12; 
+                var scaleY = y * 12;
+
+                // Time delay ပေးပြီး တစ်ပုံချင်းစီ ဖြန့်ထွက်လာအောင် လုပ်ခြင်း
+                setTimeout(() => {
+                    photo.style.opacity = '1';
+                    photo.style.transform = `translate(${scaleX}px, ${scaleY}px) scale(1)`;
+                }, index * 200); // ၀.၂ စက္ကန့်စီ ခြားပြီး ပေါ်လာမယ်
+            });
+
+            // စာသားကို နောက်ဆုံးမှ ဆွဲတင်ပြသမယ်
+            setTimeout(() => {
+                var wishes = document.getElementById('wishesText');
+                wishes.style.opacity = '1';
+                wishes.style.transform = 'scale(1)';
+            }, total * 200 + 500);
+        }
+    </script>
+</body>
+</html>
